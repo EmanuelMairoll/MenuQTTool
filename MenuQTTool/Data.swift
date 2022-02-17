@@ -11,6 +11,7 @@ import Defaults
 struct Subscription {
     let mqttTopic: String
     let stateToSymbol: [String: String];
+    let stateToCommand: [String: String];
 }
 
 struct Broker {
@@ -18,7 +19,7 @@ struct Broker {
     let port: UInt16
 }
 
-let exampleSubscription = Subscription(mqttTopic: "some/mqtt/topic", stateToSymbol: ["on": "✅", "off": "❎"])
+let exampleSubscription = Subscription(mqttTopic: "some/mqtt/topic", stateToSymbol: ["on": "✅", "off": "❎"], stateToCommand: [:])
 let exampleBroker = Broker(host: "example.com", port: 0)
 
 extension Defaults.Keys {

@@ -23,7 +23,8 @@ struct SubscriptionBridge: Defaults.Bridge {
 
         return [
             "mqttTopic": value.mqttTopic,
-            "stateToSymbol": value.stateToSymbol
+            "stateToSymbol": value.stateToSymbol,
+            "stateToCommand": value.stateToCommand
         ]
     }
 
@@ -31,12 +32,13 @@ struct SubscriptionBridge: Defaults.Bridge {
         guard
             let object = object,
             let mqttTopic = object["mqttTopic"] as? String,
-            let stateToSymbol = object["stateToSymbol"] as? [String: String]
+            let stateToSymbol = object["stateToSymbol"] as? [String: String],
+            let stateToCommand = object["stateToCommand"] as? [String: String]
         else {
             return nil
         }
 
-        return Subscription(mqttTopic: mqttTopic, stateToSymbol: stateToSymbol)
+        return Subscription(mqttTopic: mqttTopic, stateToSymbol: stateToSymbol, stateToCommand: stateToCommand)
     }
 }
 
